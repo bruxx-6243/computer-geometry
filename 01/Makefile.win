@@ -1,0 +1,40 @@
+# Project: Project2
+# Compiler: Default GCC compiler
+# Compiler Type: MingW 3
+# Makefile created by wxDev-C++ IDE 7.4.2.558 on 18.02.22 13:08
+
+WXLIBNAME = wxmsw29u
+CPP       = g++.exe
+CC        = gcc.exe
+WINDRES   = "windres.exe"
+OBJ       = Objects/MingW/main.o
+LINKOBJ   = "Objects/MingW/main.o"
+LIBS      = -L"C:/CompGeom2022/wxDevCppP7/App/devcpp/lib/wx/gcc_lib" -L"C:/CompGeom2022/wxDevCppP7/App/devcpp/lib" -L"C:/CompGeom2022/wxDevCppP7/App/devcpp/MinGW32/lib" -L"C:/CompGeom2022/wxDevCppP7/App/devcpp/lib" -L"App/DevCpp/lib" -L"C:/CompGeom2022/wxDevCppP7/App/devcpp/lib" -mwindows -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32  
+INCS      = -I"C:/CompGeom2022/wxDevCppP7/App/devcpp/MinGW32/include" -I"C:/CompGeom2022/wxDevCppP7/App/devcpp/include" -I"App/DevCpp/include"
+CXXINCS   = -I"C:/CompGeom2022/wxDevCppP7/App/devcpp/MinGW32/include" -I"C:/CompGeom2022/wxDevCppP7/App/devcpp/" -I"C:/CompGeom2022/wxDevCppP7/App/devcpp/include/common" -I"C:/CompGeom2022/wxDevCppP7/App/devcpp/include" -I"App/DevCpp/include" -I"C:/CompGeom2022/wxDevCppP7/App/devcpp/include"
+RCINCS    = --include-dir "C:/COMPGE~1/WXDEVC~1/App/devcpp/include/common"
+BIN       = Output/MingW/Project2.exe
+DEFINES   = 
+CXXFLAGS  = $(CXXINCS) $(DEFINES)  
+CFLAGS    = $(INCS) $(DEFINES)  
+GPROF     = gprof.exe
+ifeq ($(OS),Windows_NT)
+   RM = del /Q
+   FixPath = $(subst /,\,$1)
+else
+   RM = rm -f
+   FixPath = $1
+endif
+LINK      = g++.exe
+
+.PHONY: all all-before all-after clean clean-custom
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	$(RM) $(call FixPath,$(LINKOBJ)) "$(call FixPath,$(BIN))"
+
+$(BIN): $(OBJ)
+	$(LINK) $(LINKOBJ) -o "$(BIN)" $(LIBS) 
+
+Objects/MingW/main.o: $(GLOBALDEPS) main.cpp
+	$(CPP) -c main.cpp -o Objects/MingW/main.o $(CXXFLAGS)
